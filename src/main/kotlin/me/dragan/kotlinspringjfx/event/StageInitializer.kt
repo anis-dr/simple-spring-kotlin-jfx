@@ -1,4 +1,4 @@
-package me.dragan.kotlinspringjfx
+package me.dragan.kotlinspringjfx.event
 
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
@@ -16,9 +16,9 @@ class StageInitializer internal constructor(
     private val applicationContext: ApplicationContext,
     @Value("classpath:/mainView.fxml") private val resource: Resource,
     @Value("\${spring.application.ui.title}") private val applicationTitle: String,
-) : ApplicationListener<JavaFXApplication.StageReadyEvent> {
+) : ApplicationListener<StageReadyEvent> {
 
-    override fun onApplicationEvent(stageReadyEvent: JavaFXApplication.StageReadyEvent) {
+    override fun onApplicationEvent(stageReadyEvent: StageReadyEvent) {
         val stage: Stage = stageReadyEvent.stage
         val fxmlLoader = FXMLLoader(resource.url)
         fxmlLoader.controllerFactory = Callback {

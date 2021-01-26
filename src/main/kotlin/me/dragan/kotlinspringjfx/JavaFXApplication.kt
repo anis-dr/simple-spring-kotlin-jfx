@@ -3,8 +3,8 @@ package me.dragan.kotlinspringjfx
 import javafx.application.Application
 import javafx.application.Platform
 import javafx.stage.Stage
+import me.dragan.kotlinspringjfx.event.StageReadyEvent
 import org.springframework.boot.builder.SpringApplicationBuilder
-import org.springframework.context.ApplicationEvent
 import org.springframework.context.ConfigurableApplicationContext
 
 class JavaFXApplication : Application() {
@@ -23,10 +23,5 @@ class JavaFXApplication : Application() {
     override fun stop() {
         applicationContext.close()
         Platform.exit()
-    }
-
-    class StageReadyEvent(stage: Stage) : ApplicationEvent(stage) {
-        val stage: Stage
-            get() = getSource() as Stage
     }
 }
